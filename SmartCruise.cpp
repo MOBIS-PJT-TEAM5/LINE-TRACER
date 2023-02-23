@@ -5,7 +5,7 @@
 #define fast_multiple 1.2;
 //참조 _ network slowstart
 
-int SmartCruise_slowly ( int now_speed ){
+int SmartCruise ( int now_speed ){
   int change_speed = now_speed;
   if ( analogRead(IR_sensor) < 500 ){
     change_speed *= slow_mulitple;
