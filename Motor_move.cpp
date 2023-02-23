@@ -2,11 +2,14 @@
 #include "AFMotor.h"
 #include "Motor_move.h"
 
+void MV( AF_DCMotor L, AF_DCMotor R, int speed_L, int speed_R, bool left_front, bool right_front ){
+  
+  if ( left_front == true ) L.run(BACKWARD);
+  if ( right_front == true ) R.run(FORWARD);
+  if ( left_front == false ) L.run(FORWARD);
+  if ( right_front == false ) R.run(BACKWARD);
 
-void MV_forward(AF_DCMotor A,AF_DCMotor B){//전진 코드
-    A.run(BACKWARD); B.run(FORWARD);
-}
+  L.setSpeed( speed_L );
+  R.setSpeed( speed_R );  
 
-void MV_backward(AF_DCMotor A,AF_DCMotor B){//후진 코드
-    A.run(FORWARD); B.run(BACKWARD);
 }

@@ -3,10 +3,6 @@
 
 #include "AFMotor.h"
 
-
-
-void MV_forward(AF_DCMotor A,AF_DCMotor B);
-void MV_backward(AF_DCMotor A,AF_DCMotor B);
- 
+void MV(AF_DCMotor L, AF_DCMotor R, int speed_L, int speed_R, bool left_front, bool right_front);
 
 #endif 
