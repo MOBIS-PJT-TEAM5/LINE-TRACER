@@ -1,46 +1,48 @@
-#include "line_trace.h"
+#include <SoftwareSerial.h>
+#include <Arduino.h>
 #include "AFMotor.h"
 #include "Motor_move.h"
+#include "line_trace.h"
+#include "config.h"
 
-// 매개변수로 모터객체를 넣어서 그 모터가 검은색을 감지하면 true를 리턴하는 함수
-bool is_detect(int motor) {
-  if (analogRead(motor) > 300) return true;
-  else return false;
+
+extern int CUR_SPEED;
+extern int LAST_CUR_STATE;
+
+
+void SmartCruise(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin, int IR_Sensor){
+    if (analogRead (IR_Sensor) < IR_SENSOR_THRESHOLD){
+        CUR_SPEED *= SLOW_MULTIPLE;
+    } else {
+        CUR_SPEED += FAST_PLUS;
+        CUR_SPEED = (CUR_SPEED > MAX_SPEED) ?  MAX_SPEED : CUR_SPEED;
+    }
+    lineTrace(L, R, Lpin, Rpin);
 }
 
-int last_state = 0;
-int reverse_speed = 110;
 
-void line_trace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin, int speed) {
-  if (is_detect(Lpin) && is_detect(Rpin)) 
-    // AF_DCMotor L, AF_DCMotor R, int speed_L, int speed_R, bool left_front, bool right_front
-    {
-      MV(L, R, speed, speed, true, true);
-      // Serial.print(analogRead(Lpin));
-      // Serial.print(" ");
-      // Serial.println(analogRead(Rpin));
-    }
 
-  else if (!is_detect(Lpin) && is_detect(Rpin)) {
-    // 오른쪽만 감지시 좌회전
-    MV(L, R, speed, reverse_speed, true, false);
-    last_state = 0;
-    // Serial.print(analogRead(Lpin));
-    // Serial.print(" ");
-    // Serial.println(analogRead(Rpin));
-  } 
-  else if (is_detect(Lpin) && !is_detect(Rpin)) {
-    MV(L, R, reverse_speed, speed, false, true);
-    last_state = 1;
-    // Serial.print(analogRead(Lpin));
-    // Serial.print(" ");
-    // Serial.println(analogRead(Rpin));
+// 매개변수로 모터객체를 넣어서 그 모터가 검은색을 감지하면 true를 리턴하는 함수
+bool isDetect(int motor) {
+    return analogRead(motor) > IR_LINE_THRESHOLD;
+}
+
+
+void lineTrace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin) {
+  if(isDetect(Lpin) && isDetect(Rpin))//둘 다 감지시 직진
+  {
+        MV(L, R, CUR_SPEED, CUR_SPEED, true, true);
   }
-  else {
-    // Serial.print(analogRead(Lpin));
-    // Serial.print(" ");
-    // Serial.println(analogRead(Rpin));
-    if (last_state == 0) MV(L, R, speed, reverse_speed, true, false);
-    else if (last_state == 1) MV(L, R, reverse_speed, speed, false, true);
+  else if(!isDetect(Lpin) && isDetect(Rpin)) {// 오른쪽만 감지시 좌회전
+    MV(L, R, CUR_SPEED, REVERSE_SPEED, true, false);
+    LAST_CUR_STATE = 0;
+  } 
+  else if (isDetect(Lpin) && !isDetect(Rpin)) {// 왼쪽만 감지시 좌회전
+    MV(L, R, REVERSE_SPEED, CUR_SPEED, false, true);
+    LAST_CUR_STATE = 1;
+  }
+  else {//둘다 흰색 감지시 recovery
+    if(LAST_CUR_STATE == 0) MV(L, R, CUR_SPEED, REVERSE_SPEED, true, false);
+    else if (LAST_CUR_STATE == 1) MV(L, R, REVERSE_SPEED, CUR_SPEED, false, true);
   }
 }
