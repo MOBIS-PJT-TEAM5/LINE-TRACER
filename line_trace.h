@@ -21,6 +21,6 @@ void SmartCruise(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin, int IR_Sensor
  * @param Lpin 라인 감지 왼쪽 센서 번호
  * @param Rpin 라인 감지 오른쪽 센서 번호
  */
-void line_trace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin);
+void lineTrace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin);
 
 #endif 

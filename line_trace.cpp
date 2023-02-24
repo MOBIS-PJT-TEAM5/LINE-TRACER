@@ -17,7 +17,7 @@ void SmartCruise(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin, int IR_Sensor
         CUR_SPEED += FAST_PLUS;
         CUR_SPEED = (CUR_SPEED > MAX_SPEED) ?  MAX_SPEED : CUR_SPEED;
     }
-    line_trace(L, R, Lpin, Rpin);
+    lineTrace(L, R, Lpin, Rpin);
 }
 
 
@@ -28,7 +28,7 @@ bool isDetect(int motor) {
 }
 
 
-void line_trace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin) {
+void lineTrace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin) {
   if(isDetect(Lpin) && isDetect(Rpin))//둘 다 감지시 직진
   {
         MV(L, R, CUR_SPEED, CUR_SPEED, true, true);
