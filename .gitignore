@@ -89,6 +89,6 @@ dkms.conf
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
-
-# End of https://www.toptal.com/developers/gitignore/api/c,c++,git
 .idea/
+cmake-build-debug/
+# End of https://www.toptal.com/developers/gitignore/api/c,c++,git
