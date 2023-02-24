@@ -5,6 +5,6 @@
 #include "Motor_move.h"
 #include <Arduino.h>
 
-void line_trace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin);
+void line_trace(AF_DCMotor &L, AF_DCMotor &R, int Lpin, int Rpin, int speed);
 
 #endif 
