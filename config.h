@@ -34,5 +34,25 @@
 #define IR_LINE_THRESHOLD 300
 #define REVERSE_SPEED 110
 
+/**
+  *사운드 센서 관련 설정 정보
+  *THRESHOLD_SS_1 : 응급차량 양보 기능이 작동하는 한계치
+  *THRESHOLD_SS_2 : 응급차량 양보 기능이 종료되는 한계치
+  *SOUND_HEAR : 소리가 들리는 것으로 판단되는 기준
+  *PLUS_POINT : SOUND_HEAR보다 값이 작을 때, 더해지는 값
+  *MINUS_POINT : SOUND_HEAR보다 값이 클 때, 더해지는 값
+  *SPEED_LOW : 응급차량 양보 기능 중 주행 속도 
+  *ROTATE_TIME : 회전에 걸리는 시간 
+  *STRAIGHT_TIME : 직진에 걸리는 시간
+**/
+
+#define THRESHOLD_SS_1 300
+#define THRESHOLD_SS_2 0
+#define SOUND_HEAR 500
+#define PLUS_POINT 100
+#define MINUS_POINT -1
+#define SPEED_LOW 125
+#define ROTATE_TIME 500
+#define STRAIGHT_TIME 500
 
 #endif //WORKSPACE_CONFIG_H
