@@ -8,6 +8,8 @@
  * IR_Sensor : 적외선 장애물 감지(IR) 센서
  * LMotor : 왼쪽 모터 ex) M2
  * RMotor : 오른쪽 모터
+ * MODE_BUTTON : 모드 버튼
+ * STOP_BUTTON : 정지 버튼
  */
 #define IRL 0
 #define IRR 5
@@ -16,6 +18,8 @@
 #define LMotor 2
 #define RMotor 1
 
+#define MODE_BUTTON A4
+#define STOP_BUTTON A2
 
 /**
  * 속도 관련 설정 정보
@@ -33,6 +37,14 @@
 #define IR_SENSOR_THRESHOLD 500
 #define IR_LINE_THRESHOLD 300
 #define REVERSE_SPEED 110
+
+/**
+ * 버튼 제어 관련 설정 정보
+ * BUTTON_PUSH_THRESHOLD: 버튼 눌림의 감지기준
+ * BUTTON_PUSH_TIME: 얼마나 오래 눌러야 하는지의 기준
+ */
+#define BUTTON_PUSH_THRESHOLD 1000
+#define BUTTON_PUSH_TIME 150
 
 
 #endif //WORKSPACE_CONFIG_H
