@@ -34,5 +34,24 @@
 #define IR_LINE_THRESHOLD 300
 #define REVERSE_SPEED 110
 
+/**
+ * LED 제어 관련 설정 정보
+ * FR_LED : 전방 오른쪽 LED 핀 번호
+ * FL_LED : 전방 왼쪽 LED 핀 번호
+ * BR_LED : 후방 오른쪽 LED 핀 번호
+ * BL_LED : 후방 왼쪽 LED 핀 번호
+ * INTERVAL : 깜빡임 주기
+ * BLINK : 깜빡이는 상태
+ * ON : 켜져있는 상태
+ * OFF : 꺼져있는 상태
+ */
+#define FR_LED 2
+#define FL_LED 4
+#define BR_LED 7
+#define BL_LED 8
+#define INTERVAL 1000
+#define BLINK 0
+#define ON 1
+#define OFF 2
 
 #endif //WORKSPACE_CONFIG_H
