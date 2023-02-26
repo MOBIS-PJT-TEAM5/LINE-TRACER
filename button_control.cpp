@@ -2,11 +2,6 @@
 #include "button_control.h"
 #include <Arduino.h>
 
-// extern int MODE_CNT;
-// extern int STOP_CNT;
-// extern bool IS_SCC;
-// extern bool IS_STOP;
-
 bool isButtonPushed(int pin) {
   int value = analogRead(pin);
   // Serial.println(temp);
@@ -16,49 +11,20 @@ bool isButtonPushed(int pin) {
     return false;
 }
 
-// void pushModeBtn(int pin) {
-//   if (isButtonPushed(pin)) {
-//     mode_cnt ++;
-//     if (mode_cnt == BUTTON_PUSH_TIME) {
-//       // mode_cnt = 0;
-//       is_scc = !is_scc;
-//       // Serial.println(cnt);
-//       Serial.println("scc 누름");
-//       Serial.println(is_scc);
-//     }
-//   } else {
-//     mode_cnt = 0;
-//   }
-// }
-
-// void pushStopBtn(int pin){
-//   if (isButtonPushed(pin)) {
-//     stop_cnt ++;
-//     if (stop_cnt == BUTTON_PUSH_TIME) {
-//       // stop_cnt = 0;
-//       is_stop = !is_stop;
-//       Serial.println("stop누름");
-//       Serial.println(is_stop);
-//     }
-//   } else {
-//     stop_cnt = 0;
-//   }
-// }
-
 /*
   cnt는 버튼이 눌리지 않을때는 항상 0을 유지함
   버튼이 눌려져 있을때는 1씩 증가하며 쌓임
   config에서 설정한 BUTTON_PUSH_TIME만큼 cnt가 쌓이는 순간 버튼이 눌렸다고 인정하고 상태를 변경
 */
-void pushBtn(int pin, &cnt, &state){
+void pushBtn(int pin, int& cnt, bool& state){
   if (isButtonPushed(pin)) {
     cnt ++;
     if (cnt == BUTTON_PUSH_TIME) {
       // stop_cnt = 0;
       state = !state;
-      Serial.print(pin);
-      Serial.print("버튼누름 ");
-      Serial.println(state);
+      // Serial.print(pin);
+      // Serial.print("버튼누름 ");
+      // Serial.println(state);
     }
   } else {
     cnt = 0;

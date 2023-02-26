@@ -68,7 +68,7 @@ void loop() {
     } 
     else 
     {
-      line_trace(Lmotor, Rmotor, IRL, IRR);
+      lineTrace(Lmotor, Rmotor, IRL, IRR);
     }
   }
 }
