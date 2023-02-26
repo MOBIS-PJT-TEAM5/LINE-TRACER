@@ -5,41 +5,41 @@ extern int FR_LED_STATE;
 extern int FL_LED_STATE;
 extern int BR_LED_STATE;
 extern int BL_LED_STATE;
-extern int FR_LED_BLINK_STATE;
-extern int FL_LED_BLINK_STATE;
-extern int BR_LED_BLINK_STATE;
-extern int BL_LED_BLINK_STATE;
 extern unsigned long PREVIOUS_MILLIS;
 extern unsigned long CURRENT_MILLIS;
+extern int CLOCK_STATE;
 
 void setLedState(int& led_state, int state) {
   led_state = state;
 }
 
-void ledControl(int pin, int state, int& blink_state) {
+void clock() {
+  CURRENT_MILLIS = millis();
+  if (CURRENT_MILLIS - PREVIOUS_MILLIS >= INTERVAL)
+  {
+    // save the last time you blinked the LED
+    PREVIOUS_MILLIS = CURRENT_MILLIS;
+    if (CLOCK_STATE == LOW)
+    {
+      CLOCK_STATE = HIGH;
+    } 
+    else 
+    {
+      CLOCK_STATE = LOW;
+    }
+  }
+}
+
+void ledControl(int pin, int state) {
   if (state == ON) 
   {
     digitalWrite(pin, HIGH);
   }
   else if (state == BLINK)
   {
-    CURRENT_MILLIS = millis();
-    if (CURRENT_MILLIS - PREVIOUS_MILLIS >= INTERVAL)
-    {
-      // save the last time you blinked the LED
-      PREVIOUS_MILLIS = CURRENT_MILLIS;
-
-      // if the LED is off turn it on and vice-versa:
-      if (blink_state == LOW)
-      {
-        blink_state = HIGH;
-      } else {
-        blink_state = LOW;
-      }
-
-      // set the LED with the ledState of the variable:
-      digitalWrite(pin, blink_state);
-    }
+    // set the LED with the ledState of the variable:
+    digitalWrite(pin, CLOCK_STATE);
+  }
   }
   else
   {
