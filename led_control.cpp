@@ -1,5 +1,6 @@
 #include "config.h"
 #include "led_control.h"
+#include <Arduino.h>
 
 extern int FR_LED_STATE;
 extern int FL_LED_STATE;
@@ -35,7 +36,6 @@ void ledControl(int pin, int state) {
   {
     // set the LED with the ledState of the variable:
     digitalWrite(pin, CLOCK_STATE);
-  }
   }
   else
   {

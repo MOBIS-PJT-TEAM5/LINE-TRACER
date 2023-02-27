@@ -41,6 +41,7 @@ int BL_LED_STATE = OFF;
 unsigned long PREVIOUS_MILLIS = 0;
 unsigned long CURRENT_MILLIS = 0;
 int CLOCK_STATE = LOW;
+bool IS_SPEED_DECREASE = false;
 
 AF_DCMotor Lmotor(LMotor);
 AF_DCMotor Rmotor(RMotor);

@@ -31,7 +31,7 @@
  */
 
 #define INITIAL_SPEED 150
-#define MAX_SPEED 120
+#define MAX_SPEED 150
 #define SLOW_MULTIPLE 0.89
 #define FAST_PLUS 5
 #define IR_SENSOR_THRESHOLD 500
