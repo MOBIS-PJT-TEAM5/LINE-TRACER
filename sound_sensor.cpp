@@ -22,7 +22,7 @@ void hear_emergency(AF_DCMotor &Lmotor, AF_DCMotor &Rmotor, int Lpin, int Rpin, 
     MV(Lmotor, Rmotor, SPEED_LOW, SPEED_LOW, true, true);//직진
     delay(STRAIGHT_TIME); 
     MV(Lmotor, Rmotor, 0,SPEED_LOW, true, true); // 좌회전
-    delay(ROTATE_TIME2-100);
+    delay(ROTATE_TIME2);
 
     Serial.println("Car go STOP");
     MV(Lmotor, Rmotor, 0,0, true, true); // 정지
@@ -41,7 +41,7 @@ void hear_emergency(AF_DCMotor &Lmotor, AF_DCMotor &Rmotor, int Lpin, int Rpin, 
     MV(Lmotor, Rmotor, SPEED_LOW, SPEED_LOW, true, true);//직진
     delay(STRAIGHT_TIME-300); 
     MV(Lmotor, Rmotor, SPEED_LOW, 0, true, true); // 우회전
-    delay(ROTATE_TIME3);
+    delay(ROTATE_TIME4);
     MV(Lmotor, Rmotor, 0, 0, true, true); //정지
     delay(1000);
   }
