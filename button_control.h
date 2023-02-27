@@ -2,5 +2,5 @@
 #define _buttonControl_h_
 
 bool isButtonPushed(int pin);
-void pushBtn(int pin, int& cnt, bool& state);
+void pushBtn(int pin, int& cnt, int& state);
 #endif 

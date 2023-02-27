@@ -16,12 +16,12 @@ bool isButtonPushed(int pin) {
   버튼이 눌려져 있을때는 1씩 증가하며 쌓임
   config에서 설정한 BUTTON_PUSH_TIME만큼 cnt가 쌓이는 순간 버튼이 눌렸다고 인정하고 상태를 변경
 */
-void pushBtn(int pin, int& cnt, bool& state){
+void pushBtn(int pin, int& cnt, int& state){
   if (isButtonPushed(pin)) {
     cnt ++;
     if (cnt == BUTTON_PUSH_TIME) {
       // stop_cnt = 0;
-      state = !state;
+      state = (state + 1) % 3;
       // Serial.print(pin);
       // Serial.print("버튼누름 ");
       // Serial.println(state);

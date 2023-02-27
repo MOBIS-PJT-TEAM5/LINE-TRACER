@@ -18,12 +18,12 @@ int LAST_CUR_STATE = 0;
  * 버튼 제어 관련 전역 변수
  * MODE_CNT : 모드버튼을 얼마나 길게 눌렀는가를 제어하기 위한 변수
  * STOP_CNT : 정지버튼을 얼마나 길게 눌렀는가를 제어하기 위한 변수
- * IS_SCC : 현재 모드가 SCC인지(true) 일반모드인지(false)
+ * MODE : 기본주행(0), 스마트크루즈(1), 소리센서(2)
  * IS_STOP : 현재 정지상태인지(true) 주행상태인지(false)
  */
 int MODE_CNT = 0;
 int STOP_CNT = 0;
-bool IS_SCC = false;
+int MODE = 0;
 bool IS_STOP = false;
 
 
@@ -88,13 +88,17 @@ void loop() {
   } 
   else 
   {
-    if (IS_SCC) 
-    {
-      SmartCruise(Lmotor, Rmotor, IRL, IRR, IR_Sensor);
-    } 
-    else 
+    if (MODE == 0) 
     {
       lineTrace(Lmotor, Rmotor, IRL, IRR);
+    } 
+    else if (MODE == 1)
+    {
+      SmartCruise(Lmotor, Rmotor, IRL, IRR, IR_Sensor);      
+    }
+    else if (MODE == 2)
+    {
+      // 소리센서
     }
   }
 }
