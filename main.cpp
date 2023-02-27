@@ -56,6 +56,7 @@ void setup() {
   pinMode(FL_LED, OUTPUT);
   pinMode(BR_LED, OUTPUT);
   pinMode(BL_LED, OUTPUT);
+  pinMode(Sound_Sensor,INPUT);
   Serial.begin(9600);
   Lmotor.setSpeed(INITIAL_SPEED);    // 모터 1 속도 설정
   Lmotor.run(RELEASE);     // 모터 1 돌리지 않는 상태
@@ -98,7 +99,7 @@ void loop() {
     }
     else if (MODE == 2)
     {
-      // 소리센서
+      hear_emergency(Lmotor, Rmotor, IRL, IRR, Sound_Sensor);
     }
   }
 }
