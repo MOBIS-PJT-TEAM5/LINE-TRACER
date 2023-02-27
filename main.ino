@@ -80,8 +80,8 @@ void loop() {
   // delay(100);
 
   // 버튼 제어
-  pushBtn(MODE_BUTTON, MODE_CNT, IS_SCC);
-  pushBtn(STOP_BUTTON, STOP_CNT, IS_STOP);
+  pushBtn(MODE_BUTTON, MODE_CNT, MODE);
+  pushStopBtn(STOP_BUTTON, STOP_CNT, IS_STOP);
 
   if (IS_STOP) 
   {

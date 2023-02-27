@@ -31,6 +31,21 @@ void pushBtn(int pin, int& cnt, int& state){
   }
 }
 
+void pushStopBtn(int pin, int& cnt, bool& state){
+  if (isButtonPushed(pin)) {
+    cnt ++;
+    if (cnt == BUTTON_PUSH_TIME) {
+      // stop_cnt = 0;
+      state = !state;
+      // Serial.print(pin);
+      // Serial.print("버튼누름 ");
+      // Serial.println(state);
+    }
+  } else {
+    cnt = 0;
+  }
+}
+
 /*
   회로수정후 테스트 필요
 */

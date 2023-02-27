@@ -3,4 +3,5 @@
 
 bool isButtonPushed(int pin);
 void pushBtn(int pin, int& cnt, int& state);
+void pushStopBtn(int pin, int& cnt, bool& state);
 #endif 
