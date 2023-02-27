@@ -4,6 +4,7 @@
 #include "Motor_move.h"
 #include "button_control.h"
 #include "led_control.h"
+#include "sound_sensor.h"
 
 /**
  * 속도 관련 전역 변수
@@ -56,7 +57,7 @@ void setup() {
   pinMode(FL_LED, OUTPUT);
   pinMode(BR_LED, OUTPUT);
   pinMode(BL_LED, OUTPUT);
-  pinMode(Sound_Sensor,INPUT);
+  pinMode(SOUND_SENSOR,INPUT);
   Serial.begin(9600);
   Lmotor.setSpeed(INITIAL_SPEED);    // 모터 1 속도 설정
   Lmotor.run(RELEASE);     // 모터 1 돌리지 않는 상태
@@ -99,7 +100,7 @@ void loop() {
     }
     else if (MODE == 2)
     {
-      hear_emergency(Lmotor, Rmotor, IRL, IRR, Sound_Sensor);
+      hear_emergency(Lmotor, Rmotor, IRL, IRR, SOUND_SENSOR);
     }
   }
 }
