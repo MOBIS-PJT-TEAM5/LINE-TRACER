@@ -9,10 +9,6 @@ extern unsigned long PREVIOUS_MILLIS;
 extern unsigned long CURRENT_MILLIS;
 extern int CLOCK_STATE;
 
-void setLedState(int& led_state, int state) {
-  led_state = state;
-}
-
 void clock() {
   CURRENT_MILLIS = millis();
   if (CURRENT_MILLIS - PREVIOUS_MILLIS >= INTERVAL)

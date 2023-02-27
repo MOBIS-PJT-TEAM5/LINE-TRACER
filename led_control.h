@@ -1,13 +1,6 @@
 #ifndef _ledControl_h_
 #define _ledControl_h_
 
-/**
- * led on off 기본 함수
- * @param led_state : 제어할 LED의 상태 변수
- * @param state : 바꿀 상태
- */
-void setLedState(int &led_state, int state);
-
 void clock();
 
 /**
