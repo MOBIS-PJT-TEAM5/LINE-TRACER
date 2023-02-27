@@ -46,5 +46,25 @@
 #define BUTTON_PUSH_THRESHOLD 1000
 #define BUTTON_PUSH_TIME 150
 
+/**
+ * LED 제어 관련 설정 정보
+ * FR_LED : 전방 오른쪽 LED 핀 번호
+ * FL_LED : 전방 왼쪽 LED 핀 번호
+ * BR_LED : 후방 오른쪽 LED 핀 번호
+ * BL_LED : 후방 왼쪽 LED 핀 번호
+ * INTERVAL : 깜빡임 주기
+ * BLINK : 깜빡이는 상태
+ * ON : 켜져있는 상태
+ * OFF : 꺼져있는 상태
+ */
+#define FR_LED 2
+#define FL_LED 13
+#define BR_LED 9
+#define BL_LED 10
+#define INTERVAL 300
+#define BLINK 0
+#define ON 1
+#define OFF 2
+
 
 #endif //WORKSPACE_CONFIG_H
